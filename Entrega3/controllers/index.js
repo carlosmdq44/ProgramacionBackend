@@ -1,6 +1,7 @@
 
-const obtenerProductos =  () => {
-    return archi1.getAll();
+const obtenerProductos =  async () => {
+        const productos = await contenido.getAll();
+        res.json(productos);    
 }
 
 const obtenerProductosRandom = () => {return "productos"}

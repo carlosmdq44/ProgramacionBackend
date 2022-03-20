@@ -1,9 +1,8 @@
 const Producto = require("./producto");
+const fs = require('fs')
 
 class Contenedor {
     
-    fs = require('fs');
-
     constructor(file){
         this.file = file;
         this.encode = 'utf-8';
@@ -13,12 +12,10 @@ class Contenedor {
         try {
             let data = await this.fs.promises.readFile(`./${this.file}`, this.encode);
             return JSON.parse(data);
-        } catch {
+        } catch (error){
             console.log("Archivo vacio");
-            return [];
         }
     };
 }
-const archi1 = new Archivo('productos.txt');
 
 module.exports = Contenedor;
