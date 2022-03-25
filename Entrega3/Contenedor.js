@@ -1,9 +1,8 @@
 const Producto = require("./producto");
+const fs = require('fs');
 
 class Contenedor {
     
-    fs = require('fs');
-
     constructor(file){
         this.file = file;
         this.encode = 'utf-8';
@@ -11,12 +10,11 @@ class Contenedor {
     
     async getAll(){
         try {
-            let data = await this.fs.promises.readFile(`./${this.file}`, this.encode);
+            let data =  fs.readFileSync(`./${this.file}`, this.encode);
             console.log(JSON.parse(data));
             return JSON.parse(data);
-        } catch {
-            console.log("Archivo vacio");
-            return [];
+        } catch(error) {
+            console.log("NO existe el archivo");
         }
     };
     
